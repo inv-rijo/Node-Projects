@@ -17,6 +17,7 @@ const STATUS = {
   NOTACTIVE: "0",
 };
 
+
 router.post("/login", async (req, res) => {
   let RawPassword = null;
   let data = null;
@@ -59,11 +60,14 @@ router.post("/login", async (req, res) => {
         expiresIn: "1d",
       }
     );
+  data.push({"accesstoken": accesstoken,"refreshtoken":refreshToken});
+  
+  let data1 = data[0];
+  let data2 = data[1];
+  let logindata =Object.assign(data1,data2);
     res
       .json({
-        data,
-        accesstoken,
-        refreshToken,
+        logindata
       })
       .status(200);
   } else {
@@ -128,4 +132,10 @@ router.put("/:id", async (req, res) => {
     }
   );
 });
+const merge = (first, second) => {
+  for(let i=0; i<second.length; i++) {
+    first.push(second[i]);
+  }
+  return first;
+}
 module.exports = router;
