@@ -85,6 +85,7 @@ const PatchUser = async (req, res) => {
   } catch (err) {
     res.send("Error" + err);
   }
+  
 };
 // add a user
 const AddUser = async (req, res) => {
@@ -103,6 +104,7 @@ const AddUser = async (req, res) => {
   } catch (err) {
     res.send("errror" + err);
   }
+  
 };
 //update user by findbyId and update
 const UpdateUser = async (req, res) => {

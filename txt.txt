@@ -1,0 +1,10 @@
+// User.sync()
+//   .then(() => {
+//     console.log("Success");
+//   })
+//   .catch((err) => {
+//     console.log("errr" + err);
+//   });
+
+
+alter the table needs to done by this

@@ -1,0 +1,24 @@
+  if (await bcrypt.compare(req.body.password, RawPassword)) {
+    console.log(data[0].user_id);
+    const accesstoken = jwt.sign(
+      {
+        user_id: data[0].user_id,
+        user_role: data[0].roles,
+        purpose: "ACCESS_TOKEN",
+      },
+      TOKEN_KEY,
+      {
+        expiresIn: "2h",
+      }
+    );
+    const refreshToken = jwt.sign(
+      { user_id: data.id, user_role: data.roles_id, purpose: "refreshToken" },
+      TOKEN_KEY,
+      {
+        expiresIn: "1d",
+      }
+    );
+    res.json(accesstoken,refreshToken).status(200);
+  } else {
+    res.send("sorry passowrd").status(500);
+  }

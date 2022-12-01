@@ -132,10 +132,5 @@ router.put("/:id", async (req, res) => {
     }
   );
 });
-const merge = (first, second) => {
-  for(let i=0; i<second.length; i++) {
-    first.push(second[i]);
-  }
-  return first;
-}
+
 module.exports = router;
